@@ -1,3 +1,6 @@
+import serial
+import sys
+
 import numpy as np
 from PIL import Image
 import sys
@@ -16,5 +19,14 @@ for i in range(0, data.shape[0]):
 			val += 2**i	
 	vals.append(hex(val))
 
+port = serial.Serial("/dev/ttyACM0", 19200, timeout=1)
+port.readlines()#clean up the buffer if there was something
+
 for i, val in enumerate(vals):
-	print 'load', i, val
+	toSend = 'load ' + str(i) + ' ' + val + '\n'
+	print "sending [" + toSend.rstrip() + "]"
+	port.write(toSend)
+	print port.readline()
+	print port.readline()
+	print port.readline()
+port.close()
