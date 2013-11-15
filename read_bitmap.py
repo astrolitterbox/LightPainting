@@ -14,7 +14,7 @@ for i in range(0, data.shape[0]):
 	for i, num in enumerate(out):
 		if num > 0:
 			val += 2**i	
-	vals.append(val)
+	vals.append(hex(val))
 
 for i, val in enumerate(vals):
 	print 'load', i, val
