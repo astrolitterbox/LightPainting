@@ -2,7 +2,12 @@ import numpy as np
 from PIL import Image
 import sys
 
-imageName = sys.argv[1]
+try:
+	imageName = sys.argv[1]
+except IndexError:
+	print 'Pass image name as an argument!'
+	print 'Debilai tu, priekurti!!1!'
+	exit() 
 i = Image.open(imageName)
 data = np.asarray(i)
 print data
