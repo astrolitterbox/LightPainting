@@ -1,8 +1,11 @@
 import numpy as np
 from PIL import Image
+import sys
 
-i = Image.open("cross.png")
+imageName = sys.argv[1]
+i = Image.open(imageName)
 data = np.asarray(i)
+print data
 data = data/255
 vals = []
 for i in range(0, data.shape[0]):
