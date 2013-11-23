@@ -13,14 +13,14 @@ except IndexError:
 	exit() 
 i = Image.open(imageName)
 data = np.asarray(i)
-print data
+print data, data.shape
 data = data/255
 vals = []
-for i in range(0, data.shape[0]):
+for i in range(0, data.shape[1]):
 	out = data[:, -i]
 	val = 0
 	for i, num in enumerate(out):
-		if num > 0:
+		if num[0] > 0:
 			val += 2**i	
 	vals.append(hex(val))
 
